@@ -78,15 +78,21 @@ export function AuthForm() {
       </TabsList>
 
       <TabsContent value="login">
-        <div className="rounded-lg border bg-card p-6 shadow-sm">
+        <div className="rounded-lg border dark:bg-zinc-900 p-6 shadow-sm">
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="login-username">Username</Label>
-              <Input id="login-username" name="username" required />
+              <Input
+                className="border-black dark:border-white focus:!border-2 focus:!border-blue-500"
+                id="login-username"
+                name="username"
+                required
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="login-password">Password</Label>
               <Input
+                className="border-black dark:border-white focus:!border-2 focus:!border-blue-500"
                 id="login-password"
                 name="password"
                 type="password"
@@ -101,19 +107,31 @@ export function AuthForm() {
       </TabsContent>
 
       <TabsContent value="register">
-        <div className="rounded-lg border bg-card p-6 shadow-sm">
+        <div className="rounded-lg border dark:bg-zinc-900 p-6 shadow-sm">
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="register-username">Username</Label>
-              <Input id="register-username" name="username" required />
+              <Input
+                className="border-black dark:border-white focus:!border-2 focus:!border-blue-500"
+                id="register-username"
+                name="username"
+                required
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="register-email">Email</Label>
-              <Input id="register-email" name="email" type="email" required />
+              <Input
+                className="border-black dark:border-white focus:!border-2 focus:!border-blue-500"
+                id="register-email"
+                name="email"
+                type="email"
+                required
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="register-password">Password</Label>
               <Input
+                className="border-black dark:border-white focus:!border-2 focus:!border-blue-500"
                 id="register-password"
                 name="password"
                 type="password"
