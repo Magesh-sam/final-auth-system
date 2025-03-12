@@ -5,21 +5,21 @@
 // for the list of available Workbox modules, or add any other
 // code you'd like.
 
-declare const self: ServiceWorkerGlobalScope
+declare const self: ServiceWorkerGlobalScope;
 
-const CACHE_NAME = "auth-system-cache-v1"
-const urlsToCache = ["/", "/dashboard", "/admin"]
+const CACHE_NAME = "auth-system-cache-v1";
+const urlsToCache = ["/", "/profile", "/admin"];
 
 // Install a service worker
 self.addEventListener("install", (event) => {
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("Opened cache")
-      return cache.addAll(urlsToCache)
-    }),
-  )
-})
+      console.log("Opened cache");
+      return cache.addAll(urlsToCache);
+    })
+  );
+});
 
 // Cache and return requests
 self.addEventListener("fetch", (event) => {
@@ -27,29 +27,28 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((response) => {
       // Cache hit - return response
       if (response) {
-        return response
+        return response;
       }
-      return fetch(event.request)
-    }),
-  )
-})
+      return fetch(event.request);
+    })
+  );
+});
 
 // Update a service worker
 self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [CACHE_NAME]
+  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName)
+            return caches.delete(cacheName);
           }
-          return null
-        }),
-      )
-    }),
-  )
-})
+          return null;
+        })
+      );
+    })
+  );
+});
 
-export {}
-
+export {};

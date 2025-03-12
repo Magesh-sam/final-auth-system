@@ -2,6 +2,7 @@ import "@testing-library/jest-dom";
 import { jest } from "@jest/globals";
 import { Toaster, ToasterProps } from "sonner";
 import React from "react";
+import { redirect } from "next/dist/server/api-utils";
 // Mock window.matchMedia for `next-themes`
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -19,6 +20,7 @@ Object.defineProperty(window, "matchMedia", {
 
 // Mock Next.js navigation
 jest.mock("next/navigation", () => ({
+  redirect: jest.fn(),
   useRouter: jest.fn(() => ({
     push: jest.fn(),
     replace: jest.fn(),
@@ -26,6 +28,7 @@ jest.mock("next/navigation", () => ({
     pathname: "/",
     query: {},
     asPath: "/",
+    redirect: jest.fn(),
   })),
   usePathname: jest.fn(() => "/"),
   useSearchParams: jest.fn(() => new URLSearchParams()),

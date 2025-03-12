@@ -6,7 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import type { User } from "@/lib/types";
 import { getUsers, saveUsers } from "@/lib/storage";
 
-interface AuthContextType {
+export interface AuthContextType {
   user: User | null;
   login: (username: string, password: string) => Promise<boolean>;
   register: (

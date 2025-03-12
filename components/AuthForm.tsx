@@ -30,7 +30,7 @@ export function AuthForm() {
         if (username === "admin") {
           router.push("/admin");
         } else {
-          router.push("/dashboard");
+          router.push("/profile");
         }
       } else {
         toast.error("Login failed");

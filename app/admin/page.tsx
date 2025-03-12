@@ -22,7 +22,7 @@ export default function AdminDashboard() {
     if (!user) {
       redirect("/");
     } else if (user.username !== "admin") {
-      redirect("/dashboard");
+      redirect("/profile");
     } else {
       setUsers(getAllUsers());
     }

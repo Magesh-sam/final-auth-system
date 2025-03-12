@@ -6,7 +6,7 @@ import { useAuth } from "@/lib/auth-context";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Button } from "@/components/ui/button";
 
-export default function Dashboard() {
+export default function profile() {
   const { user, logout } = useAuth();
 
   useEffect(() => {

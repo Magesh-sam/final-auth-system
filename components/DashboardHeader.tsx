@@ -14,7 +14,7 @@ export function DashboardHeader() {
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-6">
           <Link
-            href={user?.username === "admin" ? "/admin" : "/dashboard"}
+            href={user?.username === "admin" ? "/admin" : "/profile"}
             className="text-xl font-bold"
           >
             Auth System

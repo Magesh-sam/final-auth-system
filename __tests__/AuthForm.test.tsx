@@ -15,7 +15,7 @@ describe("AuthForm", () => {
     loginMock = authContext.login as jest.Mock;
     registerMock = authContext.register as jest.Mock;
     (useAuth as jest.Mock).mockReturnValue({
-      login: loginMock, 
+      login: loginMock,
       register: registerMock,
     });
     const router = useRouter();
@@ -41,7 +41,7 @@ describe("AuthForm", () => {
     await userEvent.click(loginButton);
     await waitFor(() => {
       expect(loginMock).toHaveBeenCalledWith("testuser", "password123");
-      expect(pushMock).toHaveBeenCalledWith("/dashboard");
+      expect(pushMock).toHaveBeenCalledWith("/profile");
     });
   });
 
