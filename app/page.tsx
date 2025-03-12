@@ -1,4 +1,4 @@
-import { AuthForm } from "@/components/auth-form";
+import { AuthForm } from "@/components/AuthForm";
 import { ToggleTheme } from "@/components/ToggleTheme";
 
 export default function Home() {

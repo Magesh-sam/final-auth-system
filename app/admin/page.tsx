@@ -1,27 +1,34 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { redirect } from "next/navigation"
-import { useAuth } from "@/lib/auth-context"
-import { DashboardHeader } from "@/components/dashboard-header"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import type { User } from "@/lib/types"
+import { useEffect, useState } from "react";
+import { redirect } from "next/navigation";
+import { useAuth } from "@/lib/auth-context";
+import { DashboardHeader } from "@/components/DashboardHeader";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import type { User } from "@/lib/types";
 
 export default function AdminDashboard() {
-  const { user, getAllUsers } = useAuth()
-  const [users, setUsers] = useState<User[]>([])
+  const { user, getAllUsers } = useAuth();
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     if (!user) {
-      redirect("/")
+      redirect("/");
     } else if (user.username !== "admin") {
-      redirect("/dashboard")
+      redirect("/dashboard");
     } else {
-      setUsers(getAllUsers())
+      setUsers(getAllUsers());
     }
-  }, [user, getAllUsers])
+  }, [user, getAllUsers]);
 
-  if (!user || user.username !== "admin") return null
+  if (!user || user.username !== "admin") return null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,9 +51,13 @@ export default function AdminDashboard() {
                 {users.length > 0 ? (
                   users.map((user) => (
                     <TableRow key={user.username}>
-                      <TableCell className="font-medium">{user.username}</TableCell>
+                      <TableCell className="font-medium">
+                        {user.username}
+                      </TableCell>
                       <TableCell>{user.email}</TableCell>
-                      <TableCell>{new Date(user.createdAt).toLocaleDateString()}</TableCell>
+                      <TableCell>
+                        {new Date(user.createdAt).toLocaleDateString()}
+                      </TableCell>
                     </TableRow>
                   ))
                 ) : (
@@ -62,6 +73,5 @@ export default function AdminDashboard() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-

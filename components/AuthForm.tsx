@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ export function AuthForm() {
   const router = useRouter();
   const { login, register } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
-
+  const loginTabBtnRef = useRef<HTMLButtonElement>(null);
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -55,14 +55,13 @@ export function AuthForm() {
       const success = await register(username, email, password);
 
       if (success) {
-        toast("Registration successful");
-        // Switch to login tab
-        document.getElementById("login-tab")?.click();
+        toast.success("Registration successful");
+        loginTabBtnRef.current?.click();
       } else {
-        toast("Registration failed");
+        toast.error("Registration failed");
       }
     } catch (error) {
-      toast("Registration failed");
+      toast.error("Registration failed");
     } finally {
       setIsLoading(false);
     }
@@ -71,7 +70,7 @@ export function AuthForm() {
   return (
     <Tabs defaultValue="login" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger id="login-tab" value="login">
+        <TabsTrigger ref={loginTabBtnRef} id="login-tab" value="login">
           Login
         </TabsTrigger>
         <TabsTrigger value="register">Register</TabsTrigger>
