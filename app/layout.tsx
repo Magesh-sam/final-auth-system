@@ -26,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <meta name="apple-mobile-web-app-title" content="Auth System" />
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
