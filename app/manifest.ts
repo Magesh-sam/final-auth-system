@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Auth System",
     short_name: "Auth",
-    start_url: "https://final-auth-system.vercel.app",
+    start_url: "/",
     prefer_related_applications: false,
     icons: [
       {
